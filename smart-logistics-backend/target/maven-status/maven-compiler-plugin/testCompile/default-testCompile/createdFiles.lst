@@ -1,0 +1,5 @@
+com\smartlogistics\controller\AuthControllerTest.class
+com\smartlogistics\service\DriverServiceTest.class
+com\smartlogistics\controller\HealthControllerTest.class
+com\smartlogistics\service\AuthServiceTest.class
+com\smartlogistics\service\BusinessServiceTest.class

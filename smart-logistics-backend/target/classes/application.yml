@@ -1,0 +1,33 @@
+server:
+  port: ${PORT:5000}
+
+spring:
+  application:
+    name: smart-logistics-backend
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+      database: ${MONGO_DATABASE:smart_logistics}
+      auto-index-creation: false
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 30MB
+
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    expires-in-ms: ${JWT_EXPIRES_IN_MS:604800000}
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:5173,http://localhost:3000}
+  services:
+    doc-verify-url: ${DOC_VERIFY_SERVICE_URL:http://localhost:8000}
+  socket:
+    host: ${SOCKET_HOST:0.0.0.0}
+    port: ${SOCKET_PORT:5001}
+
+logging:
+  level:
+    root: ${LOG_LEVEL:INFO}
+    com.smartlogistics: DEBUG
+    org.springframework.data.mongodb: INFO
