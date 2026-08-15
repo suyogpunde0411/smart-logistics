@@ -1,13 +1,14 @@
-FROM node:22-slim
-
+# Build stage
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-COPY package*.json ./
-
-RUN npm ci --omit=dev
-
-COPY . .
-
-EXPOSE 5000
-
-CMD ["npm", "start"]
+# Run stage
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
+EXPOSE 5000 5001
+ENV PORT=5000
+ENTRYPOINT ["java", "-jar", "app.jar"]

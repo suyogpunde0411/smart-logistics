@@ -5,6 +5,7 @@ services:
     container_name: smart-logistics-backend
     ports:
       - "5000:5000"
+      - "5001:5001"
     env_file:
       - ./smart-logistics-backend/.env
     environment:
